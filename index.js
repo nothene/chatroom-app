@@ -3,10 +3,29 @@ const fs = require('fs');
 
 var app = require('express')();
 var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+var iox = require('socket.io-client');
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('chat message', (msg) => {
+        console.log('message: ', msg);
+    });
+    socket.on('disconnect', () => {
+        console.log('a user disconnected');
+    });
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    })
+});
+
+const PORT = process.env.PORT || 5000;
+
+http.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 // const server = http.createServer((req, res) => {
@@ -44,7 +63,9 @@ app.get('/', (req, res) => {
 //                 })
 //             } else{
 //                 res.writeHead(500);
-//                 res.end(`Server Error: ${err.code}`);
+//                 res.end(`Serv// const PORT = process.env.PORT || 5000;
+
+// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));er Error: ${err.code}`);
 //             }
 //         } else{
 //             res.writeHead(200, {'Content-Type' : contentType});
@@ -54,6 +75,3 @@ app.get('/', (req, res) => {
 
 // });
 
-// const PORT = process.env.PORT || 5000;
-
-// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
