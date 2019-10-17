@@ -4,12 +4,12 @@
   "description": "node app",
   "main": "index.js",
   "scripts": {
-    "start" : "node index",
-    "dev" : "nodemon"
+    "start": "node index",
+    "dev": "nodemon"
   },
   "author": "none",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17"
+    "express": "^4.17.1"
   }
 }
