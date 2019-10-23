@@ -1,0 +1,24 @@
+body {
+    background-color: gray;
+}
+
+ul {
+    list-style: none;
+    grid-column: 1;
+}
+
+#m {
+    align-content: center;
+    /* width: 95%; */
+    position: sticky;
+    background-color: blue;
+    grid-column: 3;
+    grid-row 4:
+}
+
+.wrapper {
+    display: grid;
+    grid-auto-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-gap: 10px;
+}
