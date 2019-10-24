@@ -11,8 +11,8 @@ $(function () {
     $('#messages').append($('<li>').text(msg));
   });
 
-});
+  socket.on('connection', () => {
+    $('#messages').append($('<li>').text("A user has connected."));
+  })
 
-function clicked(){
-    alert("trig");
-}
+});
