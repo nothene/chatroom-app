@@ -8,11 +8,11 @@ $(function () {
   });
 
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').prepend($('<li>').text(msg));
   });
 
   socket.on('connection', () => {
-    $('#messages').append($('<li>').text("A user has connected."));
+    $('#messages').prepend($('<li>').text("A user has connected."));
   })
 
 });
