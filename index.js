@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
+var mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
@@ -27,4 +29,16 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log(socket.id + ` disconnected`);
     }); 
+});
+
+const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fwfxg.mongodb.net/chatroom?retryWrites=true&w=majority`;
+
+mongoose.connect(mongoString, {useNewUrlParser: true, useUnifiedTopology: true});
+
+mongoose.connection.on("error", (error) => {
+    console.log(error);
+});
+
+mongoose.connection.on("open", () => {
+    console.log("Connected to database.");
 });
