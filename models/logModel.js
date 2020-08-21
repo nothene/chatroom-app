@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var db = require('../config/database');
 var Schema = mongoose.Schema;
-var io = require('socket.io')();
+var io = require('../app');
 
 var LogSchema = new Schema({
     //username: {type: Schema.Types.ObjectId, ref: true, require: true},
@@ -20,16 +20,12 @@ module.exports = {
         });
     }, 
     fetchData() {
-      // logTable.countDocuments({}, (err, count) => {
-      //   console.log(count);
-      // });
       logTable.find({}, (err, res) => {
           var texts = [];
           res.forEach(e => {
             texts.push(e.message);
           });
-          //console.log(texts);
-          io.emit('init', texts);
+          return texts;
       });
     }
 };

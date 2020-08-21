@@ -5,7 +5,6 @@ const dotenv = require("dotenv").config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var createError = require('http-errors');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 var http = require('http').createServer(app);
@@ -30,18 +29,17 @@ var indexRouter = require('./routes/indexRoute');
 app.use('/', indexRouter);
 
 io.on('connection', (socket) => {
-    socket.emit('connection');
+    io.emit('new user');
     console.log(socket.id + ` connected`);
     socket.on('chat message', (msg) => {
         console.log('message: ', msg);
         io.emit('chat message', msg);
         logModel.createData(msg);
-        if(msg.message == 'hey'){
-            logModel.fetchData();
-        }
     });
     socket.on('disconnect', () => {
         io.emit('disconnect');
         console.log(socket.id + ` disconnected`);
-    }); 
+    });
 });
+
+module.exports = io;

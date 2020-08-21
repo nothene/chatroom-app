@@ -2,8 +2,6 @@ var logModel = require('../models/logModel');
 var bodyParser = require('body-parser');
 var express = require('express');
 var path = require('path');
-var app = express();
-var io = require('socket.io')();
 
 // app.use(express.static(path.join(process.cwd(), 'public')));
 
@@ -14,5 +12,8 @@ var io = require('socket.io')();
 module.exports = {
     logForm(req, res){
         res.render('../views/index');
-    },
-}
+    }, 
+    showLog(req, res){
+        res.render('../views/log');
+    }
+};

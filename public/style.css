@@ -54,8 +54,17 @@ li {
     text-align: left;
     padding: 10px;
     font-size: 14pt;
+    justify-content: space-evenly;
+    display: flex;
 }
 
 .header {
     color: white;
+}
+
+.button {
+    color: black;
+    background-color: yellow;
+    border-radius: 5px;
+    padding: 5px;
 }

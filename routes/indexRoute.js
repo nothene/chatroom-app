@@ -5,4 +5,6 @@ var logController = require('../controllers/logController');
 
 router.get('/', logController.logForm);
 
+router.get('/showlog', logController.showLog);
+
 module.exports = router;
