@@ -3,24 +3,25 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Socket.IO chat</title>
+    <title>Nothene's Chatroom</title>
   </head>
-  <script src="socket.io/socket.io.js"></script>
+  <script src="socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="main.js"></script>  
   <body>
-    <div class="wrapper">
-      <div class="top">
-        <p class="header">Chat App</p>
-      </div>
-      <div class="b">
-        <form>
-          <input id="m" type="text" placeholder="Enter your message..."autocomplete="off" autofocus/>
-        </form>
-      </div>         
-      <div class="a">
-        <ul id="messages"></ul>
-      </div>
+    <div class="top">
+      <p class="header">Nothene's Chatroom</p>
+    </div>
+    <div class="b">
+      <form>
+        <div style="display: flex">
+          <input class="input-box" type="text" placeholder="Enter your message..." autocomplete="off" autofocus/>
+          <input class="submit-box" type="submit" title="Submit">
+        </div>
+      </form>
+    </div>         
+    <div class="a">
+      <ul id="messages"></ul>
     </div>
   </body>
 </html>
