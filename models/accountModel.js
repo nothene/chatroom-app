@@ -6,4 +6,4 @@ var AccountSchema = new Schema({
     password: {type: String, require: true, maxlength: 100}
 });
 
-module.exports = mongoose.model('Account', AccountSchema);
+module.exports = mongoose.model('account', AccountSchema);  

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Nothene's Chatroom</title>
+  </head>
+  <script src="socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="main.js"></script>  
+  <body>
+    <div class="top">
+      <p class="header">Nothene's Chatroom</p>
+    </div>
+    <div class="b">
+      <form action="" method="POST">
+        <div style="display: flex">
+          <input class="input-box" type="text" name="message" placeholder="Enter your message..." autocomplete="off" autofocus/>
+          <input class="submit-box" type="submit" title="Submit">
+        </div>
+      </form>
+    </div>         
+    <div class="a">
+      <ul id="messages"></ul>
+    </div>
+  </body>
+</html>
