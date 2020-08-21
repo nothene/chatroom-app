@@ -1,18 +1,22 @@
 {
-  "name": "myapp",
+  "name": "chatroom",
   "version": "1.0.0",
-  "description": "node app",
-  "main": "index.js",
+  "description": "basic chatroom web app",
+  "main": "app.js",
   "scripts": {
-    "start": "node index",
+    "start": "node app",
     "dev": "nodemon"
   },
   "author": "none",
   "license": "ISC",
   "dependencies": {
+    "all": "0.0.0",
+    "cookie-parser": "^1.4.5",
+    "dependencies": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.0",
+    "morgan": "^1.10.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0"
   }

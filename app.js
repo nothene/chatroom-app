@@ -1,23 +1,24 @@
 const path = require('path');
 const fs = require('fs');
-
 var mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 var express = require('express');
+var createError = require('http-errors');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+var indexRouter = require('./routes/index');
 const PORT = process.env.PORT || 5000;
 
 var clients = [];
 
 http.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.use('/', indexRouter);
 
 io.on('connection', (socket) => {
     socket.emit('connection');
@@ -31,16 +32,6 @@ io.on('connection', (socket) => {
     }); 
 });
 
-const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fwfxg.mongodb.net/chatroom?retryWrites=true&w=majority`;
+var Account = require('./models/account');
 
-mongoose.connect(mongoString, {useNewUrlParser: true, useUnifiedTopology: true});
-
-mongoose.connection.on("error", (error) => {
-    console.log(error);
-});
-
-mongoose.connection.on("open", () => {
-    console.log("Connected to database.");
-});
-
-//faadsfsf
+Account.find();
