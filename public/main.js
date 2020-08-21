@@ -3,8 +3,8 @@ $(function () {
 
   $('form').submit(function(e){
     e.preventDefault();
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
+    socket.emit('chat message', $('.input-box').val());
+    $('.input-box').val('');
   });
 
   socket.on('chat message', function(msg){
@@ -12,7 +12,11 @@ $(function () {
   });
 
   socket.on('connection', () => {
-    $('#messages').prepend($('<li>').text("A user has connected."));
+    $('#messages').prepend($('<li>').text(`User has connected.`));
+  })
+
+  socket.on('connection', () => {
+    $('#messages').prepend($('<li>').text(`User has disconnected.`));
   })
 
 });
