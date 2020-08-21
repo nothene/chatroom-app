@@ -20,7 +20,7 @@ li {
     border-radius: 5px;
 }
 
-#m {
+.input-box {
     line-height: 2em;
     margin: 10px;
     border: 0;
@@ -28,7 +28,15 @@ li {
     background: paleturquoise;
     border-radius: 5px;
     padding: 10px;
-    align-self: center;
+}
+
+.submit-box {
+    line-height: 2em;
+    margin: 10px;
+    border: 0;
+    background: paleturquoise;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 #messages li:nth-child(odd){
