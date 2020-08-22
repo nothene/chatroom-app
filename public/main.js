@@ -5,7 +5,9 @@ $(function () {
     e.preventDefault();
     var text = $('.input-box').val();
     $('.input-box').val('');
-    socket.emit('chat message', {message: text});
+    if(text.length > 0){
+      socket.emit('chat message', {message: text});
+    }
   });
 
   socket.on('chat message', function(msg){

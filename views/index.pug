@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div(class='b')
+        form
+            div(style='display:flex')
+                input(class="input-box" type="text" name="message" placeholder="Enter your message..." autocomplete="off" autofocus)
+                input(class="submit-box" type="submit" title="Submit")
+    div(class='a')
+        ul(id='messages')

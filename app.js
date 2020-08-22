@@ -16,7 +16,9 @@ var clients = [];
 
 http.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'pug');
 
 app.use(express.static(path.join(process.cwd(), 'public')));
 
@@ -34,12 +36,15 @@ io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
         console.log('message: ', msg);
         io.emit('chat message', msg);
-        logModel.createData(msg);
+        logData = new logModel(msg);
+        logData.save((err) => {
+            if(err){
+                console.log(err);
+            } 
+        });
     });
     socket.on('disconnect', () => {
         io.emit('disconnect');
         console.log(socket.id + ` disconnected`);
     });
 });
-
-module.exports = io;

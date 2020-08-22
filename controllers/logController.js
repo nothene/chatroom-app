@@ -2,6 +2,7 @@ var logModel = require('../models/logModel');
 var bodyParser = require('body-parser');
 var express = require('express');
 var path = require('path');
+var async = require('async');
 
 // app.use(express.static(path.join(process.cwd(), 'public')));
 
@@ -11,9 +12,20 @@ var path = require('path');
 
 module.exports = {
     logForm(req, res){
-        res.render('../views/index');
+        res.render('../views/index', {title: 'Home'});
     }, 
     showLog(req, res){
-        res.render('../views/log');
+        async.parallel({
+            texts: (callback) => {
+                logModel.find({}, callback);
+            },
+            count: (callback) => {
+                logModel.countDocuments(callback);
+            }
+        }, (err, results) => {
+                var arr = results.texts;
+                res.render('../views/log', {error: err, data: results});
+            }
+        );
     }
 };
