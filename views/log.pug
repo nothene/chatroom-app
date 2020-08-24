@@ -2,7 +2,7 @@ extends layout
 
 block content
     div(class='a')
-        ul(id='messages')
+        ul(id='logs')
             li= 'There is ' + data.count + ' messages logged'
             each e in data.texts
                 li= e.message

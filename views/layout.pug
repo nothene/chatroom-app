@@ -10,7 +10,12 @@ html
     body
         div(class='top')
             div(class='header')
-                a(href='/') Nothene's Chatroom
-            button(id='showlog' class='button')
-                a(href='/showlog') Show Log
-        block content
+                a(href='/' style='color: white') Nothene's Chatroom
+        div(class='content')
+            div(class='sidebar' id='side')
+                a(href='/') Home <br>
+                a(href='/showlog') ShowLog
+            div(class='chat')
+                block content
+        div(class='footer')
+            All Rights Reserved
