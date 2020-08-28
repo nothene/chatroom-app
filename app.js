@@ -11,8 +11,15 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 const PORT = process.env.PORT || 5000;
 var logModel = require('./models/logModel');
+// var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
-var clients = [];
+app.use(cookieParser());
+
+// app.use(session({
+//     secret: 'no',
+//     resave: false
+// }));
 
 http.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
@@ -38,7 +45,7 @@ io.on('connection', (socket) => {
     //     }
     // });
     io.emit('new user');
-    console.log(socket.id + ` connected`);
+    console.log(socket.id + ` connected`);   
     socket.on('chat message', (msg) => {
         logData = new logModel(msg);
         console.log('message: ', msg);
@@ -48,7 +55,7 @@ io.on('connection', (socket) => {
                 console.log(err);
             } 
         });
-    }); 
+    });
     socket.on('disconnect', () => {
         io.emit('disconnect');
         console.log(socket.id + ` disconnected`);    

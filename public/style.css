@@ -54,19 +54,14 @@ li {
     background-color: #f3e6ff;
 }
 
-.top {
+.header {
     grid-row: 1;
     background-color: #8000FF;
-    text-align: left;
     padding: 10px;
     font-size: 14pt;
     justify-content: space-evenly;
     display: flex;
     height: 5vh;
-}
-
-.header {
-    color: white;
 }
 
 .button {
@@ -83,20 +78,80 @@ a {
 
 .content {
     display: flex;
-    height: 100vh
+    height: 100vh;
 }
 
 
 .sidebar {
     width: 10vw;
-    background-color: pink;
-    padding: 0.5em;
-    /* overflow-x: hidden;
-    overflow-y: auto; */
+    /* padding: 0.5em; */
+    /* overflow-x: hidden; */
 }
 
 .chat {
     width: 100vw;
-    height: 90vh;
-    overflow-y: scroll; 
+    height: 95vh;
+    overflow-y: auto; 
+}
+
+.menu {
+    background-color: pink;
+    height: 40vh;
+    padding: 0.5em;
+}
+
+.room {
+    background-color: #70b0ec;
+    height: 100vh;
+    padding: 0.5em;
+    overflow-y: auto;
+}
+
+#login_form {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #0000004d;
+    z-index: 2;
+}
+
+.top a {
+    color: white;
+}
+
+#square {
+    border-radius: 2rem;
+    position: fixed;
+    left: 37.5%;
+    top: 25%;
+    width: 25%;
+    height: 50%;
+    background-color: white;
+}
+
+.square_login {
+    position: relative;
+    padding-left: 50%;
+}
+
+.login_input_box {
+    line-height: 2em;
+    margin: 10px;
+    border: 0;
+    width: 80%;
+    background: paleturquoise;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.login_submit_box {
+    line-height: 2em;
+    margin: 10px;
+    border: 0;
+    background: paleturquoise;
+    border-radius: 5px;
+    padding: 10px;
 }

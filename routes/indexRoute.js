@@ -7,4 +7,6 @@ router.get('/', logController.logForm);
 
 router.get('/showlog', logController.showLog);
 
+router.post('/auth', logController.guestLogin);
+
 module.exports = router;

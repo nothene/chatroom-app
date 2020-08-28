@@ -2,9 +2,12 @@ extends layout
 
 block content
     div(class='b')
-        form
+        form(id='chat_form')
             div(style='display:flex')
                 input(class="input-box" type="text" name="message" placeholder="Enter your message..." autocomplete="off" autofocus)
                 input(class="submit-box" type="submit" title="Submit")
     div(class='a')
         ul(id='messages')
+
+block login_status
+    div(id='login') Login

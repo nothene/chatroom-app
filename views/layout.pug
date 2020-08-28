@@ -8,13 +8,25 @@ html
         script(src='socket.io.js')
 
     body
+        div(id='login_form')
+            div(id='square')
+                div(class='square_login') Log In
+                form(action='/auth' id='guest_login' method='POST')
+                    input(class="login_input_box" type="text" name="guest_name" placeholder="Enter your guest name..." autocomplete="off" autofocus)
+                    input(class="login_submit_box" type="submit" title="Submit")
         div(class='top')
             div(class='header')
-                a(href='/' style='color: white') Nothene's Chatroom
+                a(href='/') Nothene's Chatroom
+                div(id='check') Check
+                block login_status
         div(class='content')
             div(class='sidebar' id='side')
-                a(href='/') Home <br>
-                a(href='/showlog') ShowLog
+                div(class='menu')
+                    a(href='/') Home <br>
+                    a(href='/showlog') ShowLog
+                div(class='room')
+                    div hello
+                    //- block rooms
             div(class='chat')
                 block content
         div(class='footer')

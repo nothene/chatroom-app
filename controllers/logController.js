@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var path = require('path');
 var async = require('async');
+var session = require('express-session');
 
 // app.use(express.static(path.join(process.cwd(), 'public')));
 
@@ -12,7 +13,7 @@ var async = require('async');
 
 module.exports = {
     logForm(req, res){
-        res.render('../views/index', {title: 'Home'});
+        res.render('../views/index', {title: 'Home', uname: 'Anon'});
     }, 
     showLog(req, res){
         async.parallel({
@@ -23,9 +24,13 @@ module.exports = {
                 logModel.countDocuments(callback);
             }
         }, (err, results) => {
-                var arr = results.texts;
-                res.render('../views/log', {error: err, data: results});
+                console.log(req.cookies.username);
+                res.render('../views/log', {error: err, data: results, username: req.cookies.username});
             }
         );
+    },
+    guestLogin(req, res) {
+        res.cookie('username', req.body.guest_name);
+        res.render('../views/index', {title: 'Home'});
     }
 };

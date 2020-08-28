@@ -1,7 +1,15 @@
 $(function () {
   var socket = io();
 
-  $('form').submit(function(e){
+  $('#login').click(() => {
+    document.getElementById('login_form').style.display = "block";
+  });
+
+  $('#check').click(() => {
+    alert(document.cookie);
+  });  
+
+  $('#chat_form').submit(function(e){
     e.preventDefault();
     var text = $('.input-box').val();
     $('.input-box').val('');
