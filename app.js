@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
     console.log(socket.id + ` connected`);   
     socket.on('chat message', (msg) => {
         logData = new logModel(msg);
-        console.log('message: ', msg);
+        console.log('message: ', msg.message);
         io.emit('chat message', msg);
         logData.save((err) => {
             if(err){

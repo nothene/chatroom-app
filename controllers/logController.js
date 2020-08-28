@@ -13,7 +13,7 @@ var session = require('express-session');
 
 module.exports = {
     logForm(req, res){
-        res.render('../views/index', {title: 'Home', uname: 'Anon'});
+        res.render('../views/index', {title: 'Home'});
     }, 
     showLog(req, res){
         async.parallel({

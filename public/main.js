@@ -1,3 +1,5 @@
+import Cookies from "../js.cookie.mjs"
+
 $(function () {
   var socket = io();
 
@@ -13,16 +15,13 @@ $(function () {
     e.preventDefault();
     var text = $('.input-box').val();
     $('.input-box').val('');
-    var side = document.getElementById('side');
-    side.style.height = side.style.height;
-    console.log(side.style.height);    
     if(text.length > 0){
-      socket.emit('chat message', {message: text});
+      socket.emit('chat message', {user: Cookies.get('username'), message: text});
     }
   });
 
   socket.on('chat message', function(msg){
-    $('#messages').prepend($('<li>').text(msg.message));
+    $('#messages').prepend($('<li>').text(msg.user + ': ' + msg.message));
   });
 
   socket.on('connect', () => {
