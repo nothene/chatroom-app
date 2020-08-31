@@ -38,23 +38,12 @@ var indexRouter = require('./routes/indexRoute');
 app.use('/', indexRouter);
 
 io.on('connection', (socket) => {
-    // logUser = new logModel({message: socket.id + ' connected'});
-    // logUser.save((err) => {
-    //     if(err){
-    //         console.log();
-    //     }
-    // });
     io.emit('new user');
     console.log(socket.id + ` connected`);   
     socket.on('chat message', (msg) => {
-        logData = new logModel(msg);
         console.log('message: ', msg.message);
         io.emit('chat message', msg);
-        logData.save((err) => {
-            if(err){
-                console.log(err);
-            } 
-        });
+        logModel.createData(msg);
     });
     socket.on('disconnect', () => {
         io.emit('disconnect');

@@ -3,8 +3,30 @@ import Cookies from "../js.cookie.mjs"
 $(function () {
   var socket = io();
 
+  // $(window).on("load", () => {
+  //     console.log(Cookies.get('username'));
+  //     if(Cookies.get('username') == ""){
+  //       document.getElementById('login').innerHTML = 'Logged in as ' + Cookies.get('username');
+  //     } else {
+  //       document.getElementById('login').innerHTML = 'Login';
+  //     }
+  //   }
+  // );
+
+  $('#nav').click(() => {
+    if(document.getElementById('side').style.width == '0%'){
+      document.getElementById('side').style.width = '10%';
+    } else {
+      document.getElementById('side').style.width = '0%';
+    }
+  });
+
   $('#login').click(() => {
-    document.getElementById('login_form').style.display = "block";
+    if(Cookies.get('username') == ""){
+      document.getElementById('login_form').style.display = "block";
+    } else {
+      Cookies.set('username', '');
+    }    
   });
 
   $('#check').click(() => {
@@ -21,7 +43,7 @@ $(function () {
   });
 
   socket.on('chat message', function(msg){
-    $('#messages').prepend($('<li>').text(msg.user + ': ' + msg.message));
+    $('#messages').append($('<li>').text(msg.user + ': ' + msg.message));
   });
 
   socket.on('connect', () => {
@@ -29,10 +51,10 @@ $(function () {
   });
 
   socket.on('new user', () => {
-    $('#messages').prepend($('<li>').text('A new user has connected'));
+    $('#messages').append($('<li>').text('A new user has connected'));
   });
 
   socket.on('disconnect', () => {
-    $('#messages').prepend($('<li>').text(`User has disconnected.`));
+    $('#messages').append($('<li>').text(`User has disconnected.`));
   });
 });

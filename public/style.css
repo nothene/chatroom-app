@@ -6,12 +6,48 @@
 body {
     background-color: #f3e6ff;
     font-family: 'Courier New', Courier, monospace;
-    overflow: hidden;
+    height: 100vh;
+}
+
+.header {
+    background-color: #8000FF;
+    font-size: 2vh;
+    justify-content: space-between;
+    display: flex;
+    color: white;
+    min-height: 7vh;
+}
+
+.content {
+    display: flex;
+    max-height: 86vh;
+}
+
+.footer {
+    display: flex;
+    background-color: #8000FF;
+    min-width: 100%;
+    min-height: 7vh;
+    max-height: 7vh;
+}
+
+.menu {
+    background-color: pink;
+    height: 43vh;
+}
+
+.room {
+    background-color: #70b0ec;
+    height: 43vh;
+    overflow-y: auto;
+}
+
+.header div {
+    padding: 1em;
 }
 
 ul {
     list-style-type: none;
-    /* margin: 10px 10px 10px 10px; */
     padding: 5px;
     word-wrap: break-word;
 }
@@ -22,22 +58,23 @@ li {
 }
 
 .input-box {
-    line-height: 2em;
-    margin: 10px;
+    margin: 1vh;
     border: 0;
-    width: 80%;
+    width: 85vw;
     background: paleturquoise;
     border-radius: 5px;
-    padding: 10px;
+    padding: 0 1em;
+    height: 5vh;
+    font-size: 1.5vh;
 }
 
 .submit-box {
-    line-height: 2em;
-    margin: 10px;
     border: 0;
     background: paleturquoise;
     border-radius: 5px;
-    padding: 10px;
+    width: 11vw;
+    margin: 1vh;
+    font-size: 1.5vh;
 }
 
 #messages li:nth-child(odd){
@@ -51,17 +88,6 @@ li {
 .b {
     position: sticky;
     top: 0;
-    background-color: #f3e6ff;
-}
-
-.header {
-    grid-row: 1;
-    background-color: #8000FF;
-    padding: 10px;
-    font-size: 14pt;
-    justify-content: space-evenly;
-    display: flex;
-    height: 5vh;
 }
 
 .button {
@@ -76,34 +102,15 @@ a {
     color: blue;
 }
 
-.content {
-    display: flex;
-    height: 100vh;
-}
-
-
 .sidebar {
-    width: 10vw;
-    /* padding: 0.5em; */
-    /* overflow-x: hidden; */
+    width: 10%;
+    transition: width 1s;
+    z-index: 3;
+    font-size: 1.5vh;
 }
 
 .chat {
-    width: 100vw;
-    height: 95vh;
-    overflow-y: auto; 
-}
-
-.menu {
-    background-color: pink;
-    height: 40vh;
-    padding: 0.5em;
-}
-
-.room {
-    background-color: #70b0ec;
-    height: 100vh;
-    padding: 0.5em;
+    width: 100%;
     overflow-y: auto;
 }
 
@@ -115,43 +122,51 @@ a {
     top: 0;
     left: 0;
     background-color: #0000004d;
-    z-index: 2;
+    z-index: 5;
 }
 
-.top a {
+.header a {
     color: white;
 }
 
 #square {
-    border-radius: 2rem;
+    border-radius: 1vh;
     position: fixed;
-    left: 37.5%;
+    left: 35%;
     top: 25%;
-    width: 25%;
+    width: 30%;
     height: 50%;
     background-color: white;
+    padding: 1vh;
+    font-size: 1.5vh;
 }
 
 .square_login {
-    position: relative;
-    padding-left: 50%;
+    font-size: 1.5vh;
+    display: table;
+    margin: 1vh auto;
+    padding: 2vh;
 }
 
 .login_input_box {
-    line-height: 2em;
-    margin: 10px;
+    font-size: 1.5vh;
+    display: table;
+    margin: 1% auto;
     border: 0;
     width: 80%;
     background: paleturquoise;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 1vh;
+    padding: 2%;
 }
 
 .login_submit_box {
-    line-height: 2em;
-    margin: 10px;
+    font-size: 1.5vh;
+    display: table;
+    margin: 1% auto;
     border: 0;
+    width: 84%;
     background: paleturquoise;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 1vh;
+    padding: 2%;
 }
+

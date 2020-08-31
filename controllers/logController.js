@@ -13,24 +13,14 @@ var session = require('express-session');
 
 module.exports = {
     logForm(req, res){
+        res.cookie('username', '')
         res.render('../views/index', {title: 'Home'});
     }, 
-    showLog(req, res){
-        async.parallel({
-            texts: (callback) => {
-                logModel.find({}, callback);
-            },
-            count: (callback) => {
-                logModel.countDocuments(callback);
-            }
-        }, (err, results) => {
-                console.log(req.cookies.username);
-                res.render('../views/log', {error: err, data: results, username: req.cookies.username});
-            }
-        );
+    async showLog(req, res){
+        res.render('../views/log', await logModel.showLog(req.cookies.username));
     },
     guestLogin(req, res) {
-        res.cookie('username', req.body.guest_name);
+        res.cookie('username', req.body.guest_name, {expires: new Date(Date.now() + 86400000)});
         res.render('../views/index', {title: 'Home'});
     }
 };
