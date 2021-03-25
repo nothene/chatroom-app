@@ -21,11 +21,35 @@ $(function () {
     }
   });
 
+  /*
   $('#login').click(() => {
     if(Cookies.get('username') == ""){
       document.getElementById('login_form').style.display = "block";
     } else {
       Cookies.set('username', '');
+    }    
+  });
+*/
+  $('#login').click(() => {
+    if(Cookies.get('username') == ""){
+      document.getElementById('login_form').style.display = "block";
+      console.log(username);
+      //status.value = 1;
+    } else {
+      Cookies.set('username', '');
+      Cookies.set('password', '');
+      //status.value = 1;
+    }    
+  });
+
+  $('#logout').click(() => {
+    if(!Cookies.get('username') == ""){
+      //document.getElementById('login_form').style.display = "block";
+      Cookies.set('username', '');
+      //status.value = 0;
+    } else {
+      //Cookies.set('username', '');
+      //Cookies.set('password', '');
     }    
   });
 

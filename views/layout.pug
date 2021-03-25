@@ -1,4 +1,5 @@
 doctype html
+
 html
     head
         title= title
@@ -18,16 +19,23 @@ html
                 br
                 br
                 div(class='square_login') User Log In
-                form(action='/auth' id='guest_login2' method='POST')
-                    input(class="login_input_box" type="text" name="guest_name" placeholder="Enter your guest name..." autocomplete="off" autofocus)
-                    input(class="login_input_box" type="text" name="guest_name" placeholder="Enter your guest name..." autocomplete="off" autofocus)
-                    input(class="login_submit_box" type="submit" title="Submit")              
-                    input(class="login_submit_box" type="submit" title="Submit")                    
+                form(action='/login' id='guest_login' method='POST')
+                    input(class="login_input_box" type="text" name="username" placeholder="Enter your ID" autocomplete="off" autofocus)
+                    input(class="login_input_box" type="text" name="password" placeholder="Enter your Password" autocomplete="off" autofocus)
+                    input(class="login_submit_box" type="submit" title="Login")              
+                       
+                div(class='square_login') -- Register --
+                form(action='/register' id='register' method='POST')
+                    input(class="login_input_box" type="text" name="username" placeholder="Enter your ID" autocomplete="off" autofocus)
+                    input(class="login_input_box" type="text" name="password" placeholder="Enter your Password" autocomplete="off" autofocus)
+                    input(class="login_submit_box" type="submit" title="Register")              
+                                          
         div(class='header')
             div(id='nav') &#9776;
             div()
                 a(href='/') Nothene's Chatroom
             div(id='login') Login
+            div(id='logout') Logout
         div(class='content')
             div(class='sidebar' id='side')
                 div(class='menu')

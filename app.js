@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 5000;
 var logModel = require('./models/logModel');
 // var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
+//global.status = false;
+global.username = [];
+global.password = [];
 app.use(cookieParser());
 
 // app.use(session({
