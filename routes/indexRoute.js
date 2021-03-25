@@ -8,5 +8,6 @@ router.get('/', logController.logForm);
 router.get('/showlog', logController.showLog);
 
 router.post('/auth', logController.guestLogin);
-
+router.post('/login', logController.login);
+router.post('/register', logController.register);
 module.exports = router;
